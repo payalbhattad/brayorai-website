@@ -11,16 +11,47 @@ export function ScrollingBanner() {
     "Error-Free Formatting",
   ];
 
-  // Duplicate items to create seamless loop
+  const colors = [
+    "#315762", // deep teal
+    "#006D77", // cyan-blue
+    "#264653", // slate blue
+    "#2A9D8F", // green-teal
+    "#457B9D", // blue-gray
+    "#118AB2", // sky blue
+    "#073B4C", // dark cyan
+    "#5C6BC0", // indigo
+    "#0096C7", // bright azure
+  ];
+
   const allItems = [...items, ...items, ...items];
 
   return (
-    <div className="py-10 bg-gradient-to-r from-gray-50 to-gray-100 overflow-hidden">
-      <div className="flex animate-scroll whitespace-nowrap">
+    <div
+      style={{
+        paddingTop: "2.5rem",
+        paddingBottom: "2.5rem",
+        background: "linear-gradient(to right, #f9fafb, #f3f4f6)",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        className="flex animate-scroll whitespace-nowrap"
+        style={{ display: "flex", whiteSpace: "nowrap" }}
+      >
         {allItems.map((item, index) => (
           <div
             key={index}
-            className="inline-flex items-center px-8 py-3 mx-2 bg-white rounded-full shadow-sm text-gray-700"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "0.75rem 2rem",
+              margin: "0 0.5rem",
+              borderRadius: "9999px",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+              color: "#ffffff",
+              backgroundColor: colors[index % colors.length],
+              fontWeight: 500,
+            }}
           >
             {item}
           </div>

@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { FileText, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.png"; // <- add this
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = ["Features", "How It Works", "Services", "Pricing", "Contact"];
 
+  // also handles multi-word items like "How It Works"
   const scrollToSection = (item: string) => {
-    const sectionId = item.toLowerCase().replace(" ", "-");
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const sectionId = item.toLowerCase().replace(/\s+/g, "-");
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
@@ -21,10 +23,19 @@ export function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F29224] to-[#F29224] flex items-center justify-center">
-              <FileText className="w-5 h-5 text-white" />
+            <img
+              src={logo}
+              alt="BrayorAI"
+              className="h-14 w-auto object-contain"
+            />
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-semibold text-gray-900">
+                Brayor<span className="text-[#F29224]">AI</span>
+              </span>
+              <span className="text-xs font-medium bg-[#F29224]/10 text-[#F29224] px-2 py-0.5 rounded-full border border-[#F29224]/30">
+                Beta
+              </span>
             </div>
-            <span className="text-xl text-gray-900">BrayorAI</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -45,7 +56,7 @@ export function Navigation() {
             <button className="text-gray-600 hover:text-gray-900 transition-colors">
               Login
             </button>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#1A2F40] to-[#1A2F40] text-white hover:scale-105 transition-transform shadow-lg">
+            <button className="px-6 py-3 rounded-xl bg-[#1A2F40] text-white hover:scale-105 transition-transform shadow-lg">
               Get Started Free
             </button>
           </div>
@@ -79,7 +90,7 @@ export function Navigation() {
               <button className="block w-full text-left text-gray-600 hover:text-gray-900 transition-colors">
                 Login
               </button>
-              <button className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-[#1A2F40] to-[#1A2F40] text-white">
+              <button className="w-full px-6 py-3 rounded-xl bg-[#1A2F40] text-white">
                 Get Started Free
               </button>
             </div>

@@ -1,116 +1,117 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 
+type Period = "monthly" | "yearly";
+
 export function Pricing() {
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+  const [billingPeriod, setBillingPeriod] = useState<Period>("monthly");
 
   const plans = [
     {
-      badge: { text: "EARLY BETA ACCESS", color: "bg-[#F29224]" },
-      price: "FREE",
-      subtitle: "during beta",
+      badgeText: "EARLY BETA ACCESS",
+      badgeClass: "bg-[#F29224] text-white",
+      title: "FREE",
+      subtitle: "Become a Beta Insider",
       features: [
         "Full access during beta",
         "AI resume enhancement",
         "Priority access to new features",
-        "Shape feedback on continued product improvements",
+        "Provide feedback to influence product improvements",
       ],
-      cta: "Join Beta (Free)",
-      ctaStyle: "bg-gradient-to-r from-[#1A2F40] to-[#1A2F40]",
-      cardStyle: "bg-white border-2 border-gray-200",
-      isSpecial: false,
+      cta: "Join Beta Free",
+      ctaClass: "bg-[#1A2F40] text-white",
+      footnote: "No credit card required",
+      cardClass: "bg-white border-2 border-gray-200",
     },
     {
-      badge: { text: "SPECIAL LAUNCH PRICING", color: "bg-orange-200 text-orange-900" },
-      price: "Coming Soon",
-      subtitle: "Lock in early beta pricing",
+      badgeText: "OFFICIAL LAUNCH PRICING",
+      badgeClass: "bg-orange-200 text-orange-900",
+      title: "Coming Soon",
+      subtitle: "Launching Soon",
       features: [
         "Pricing will go live after beta",
-        "Beta members will receive exclusive early pricing",
-        "No contracts",
+        "Beta members will receive exclusive early adopter pricing",
+        "Be notified",
       ],
-      cta: "Get Started",
-      ctaStyle: "bg-gradient-to-r from-[#F29224] to-[#F29224]",
-      cardStyle: "bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-300",
-      isSpecial: true,
+      cta: "Get Notified",
+      ctaClass: "bg-[#F29224] text-white",
+      footnote: "Secure your spot before public release",
+      cardClass: "bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-300",
     },
   ];
 
   return (
-    <section id="pricing" className="py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="bg-gradient-to-b from-white to-gray-50 py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">
-            Pricing & Plans
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl text-gray-900 sm:text-5xl">Pricing & Plans</h2>
+          <p className="mx-auto mb-8 max-w-3xl text-lg text-gray-600">
             Start free, then shape the product. Enjoy full access now and receive early-winner pricing at launch.
           </p>
 
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-2 p-1 bg-gray-100 rounded-full">
+          {/* Billing toggle (kept for later) */}
+          <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 p-1">
             <button
               onClick={() => setBillingPeriod("monthly")}
-              className={`px-6 py-2 rounded-full transition-colors ${
-                billingPeriod === "monthly"
-                  ? "bg-[#1A2F40] text-white"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`rounded-full px-6 py-2 transition-colors ${billingPeriod === "monthly" ? "bg-[#1A2F40] text-white" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               Monthly
             </button>
             <button
               onClick={() => setBillingPeriod("yearly")}
-              className={`px-6 py-2 rounded-full transition-colors flex items-center gap-2 ${
-                billingPeriod === "yearly"
-                  ? "bg-[#1A2F40] text-white"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
+              className={`rounded-full px-6 py-2 transition-colors ${billingPeriod === "yearly" ? "bg-[#1A2F40] text-white" : "text-gray-600 hover:text-gray-900"
+                }`}
             >
               Yearly
-              <span className="text-xs px-2 py-1 bg-[#F29224] text-white rounded-full">
-                SAVE 25%
-              </span>
+              <span className="ml-2 rounded-full bg-[#F29224] px-2 py-1 text-xs text-white">SAVE 25%</span>
             </button>
           </div>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`relative ${plan.cardStyle} rounded-3xl p-8 lg:p-10`}
+        {/* Cards */}
+        <div className="mx-auto grid max-w-3xl gap-8 md:grid-cols-2">
+
+
+          {plans.map((p, i) => (
+            <article
+              key={i}
+              className={`flex min-h-[560px] flex-col justify-between rounded-3xl p-8 lg:p-10 transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 ${p.cardClass}`}
             >
-              {plan.isSpecial && (
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs px-4 py-2 rounded-lg rotate-12 shadow-lg">
-                  SPECIAL LAUNCH PRICING
-                </div>
-              )}
 
-              <div className={`${plan.badge.color} text-white text-xs px-4 py-2 rounded-full inline-block mb-6`}>
-                {plan.badge.text}
+              {/* Top */}
+              <div>
+                <span className={`mb-6 inline-block rounded-full px-4 py-2 text-xs ${p.badgeClass}`}>
+                  {p.badgeText}
+                </span>
+
+                <h3 className="text-4xl text-gray-900">{p.title}</h3>
+                <p className="mt-1 mb-4 text-sm text-gray-500">{p.subtitle}</p>
+
+
+                <ul className="mt-6 space-y-4">
+                  {p.features.map((f, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#F29224]" />
+                      <span className="text-gray-700">{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="mb-6">
-                <div className="text-5xl text-gray-900 mb-2">{plan.price}</div>
-                <div className="text-gray-600">{plan.subtitle}</div>
+              {/* Bottom (aligned) */}
+              <div>
+                <button
+                  className={`w-full rounded-xl px-6 py-4 text-center text-base shadow-lg transition-transform hover:scale-105 ${p.ctaClass} mt-12`}
+                >
+                  {p.cta}
+                </button>
+                <p className="mt-6 text-sm text-gray-500">{p.footnote}</p>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#F29224] flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
 
-              <button className={`w-full ${plan.ctaStyle} text-white py-4 rounded-xl hover:scale-105 transition-transform shadow-lg`}>
-                {plan.cta}
-              </button>
-            </div>
+            </article>
           ))}
         </div>
       </div>
