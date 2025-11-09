@@ -1,0 +1,26 @@
+@'
+# dependencies
+node_modules/
+.pnp/
+.pnpm-store/
+
+# builds / caches
+dist/
+build/
+.next/
+.out/
+.vite/
+.esbuild/
+.cache/
+coverage/
+*.log
+
+# tooling
+.vscode/
+.DS_Store
+Thumbs.db
+
+# env
+.env
+.env.*
+'@ | Out-File -Encoding UTF8 .gitignore
