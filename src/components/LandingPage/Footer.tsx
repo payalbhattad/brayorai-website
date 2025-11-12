@@ -1,5 +1,6 @@
 import { Twitter, Linkedin, Github, Mail } from "lucide-react";
-import logo from "../assets/logo.png"; // <-- use your logo file
+import logo from "../../assets/logo.png";
+
 
 export function Footer() {
   const quickLinks = ["Features", "Pricing", "Contact", "Privacy", "Terms"];

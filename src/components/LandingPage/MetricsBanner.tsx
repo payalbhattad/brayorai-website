@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Reveal, scaleIn } from "../lib/motion-kit";
+import { Reveal, scaleIn } from "@/lib/motion-kit";
 
 
 export function MetricsBanner() {

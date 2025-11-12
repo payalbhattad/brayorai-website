@@ -1,7 +1,9 @@
 import { ArrowRight } from "lucide-react";
-import ctaBg from "../assets/cta-bg.jpg";
+import { useNavigate } from "react-router-dom";
+import ctaBg from "../../assets/cta-bg.jpg";
 
 export function CTA() {
+  const navigate = useNavigate();
   return (
     <section
       id="contact"
@@ -28,7 +30,10 @@ export function CTA() {
             <span className="text-white font-medium">Start free</span> during Beta. No credit card required.
           </p>
 
-          <button className="bg-[#F29224] hover:bg-[#d97f1f] text-[#1A2F40] font-bold px-6 py-3 rounded-lg transition-colors">
+          <button
+            onClick={() => navigate('/signup')}
+            className="bg-[#F29224] hover:bg-[#d97f1f] text-[#1A2F40] font-bold px-6 py-3 rounded-lg transition-colors"
+          >
             Join the Beta
           </button>
         </div>

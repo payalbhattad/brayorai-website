@@ -18,7 +18,7 @@ export function FAQ() {
     {
       question: "Can I use my own branded templates?",
       answer:
-        "Custom template support is coming in Q1 2025. You'll be able to upload your agency's branded resume designs, and BrayorAI will apply them automatically to all formatted resumes.",
+        "Custom template support is coming in Q1 2026. You'll be able to upload your agency's branded resume designs, and BrayorAI will apply them automatically to all formatted resumes.",
     },
     {
       question: "Will it integrate with our ATS or CRM?",
@@ -65,9 +65,8 @@ export function FAQ() {
               >
                 <span className="text-lg text-white pr-4">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-white flex-shrink-0 transition-transform ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 text-white flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {openIndex === index && (

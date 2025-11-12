@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.png"; // <- add this
+import logo from "../../assets/logo.png"; // <- add this
 
 export function Navigation() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = ["Features", "How It Works", "Services", "Pricing", "Contact"];
+  const navItems = ["How It Works", "Features", "Pricing", "Contact"];
 
   // also handles multi-word items like "How It Works"
   const scrollToSection = (item: string) => {
@@ -53,10 +55,16 @@ export function Navigation() {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="text-gray-600 hover:text-gray-900 transition-colors">
+            <button
+              onClick={() => navigate('/login')}
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
               Login
             </button>
-            <button className="px-6 py-3 rounded-xl bg-[#1A2F40] text-white hover:scale-105 transition-transform shadow-lg">
+            <button
+              onClick={() => navigate('/signup')}
+              className="px-6 py-3 rounded-xl bg-[#1A2F40] text-white hover:scale-105 transition-transform shadow-lg"
+            >
               Get Started Free
             </button>
           </div>
@@ -87,10 +95,16 @@ export function Navigation() {
               </button>
             ))}
             <div className="px-4 pt-4 space-y-3 border-t border-gray-100">
-              <button className="block w-full text-left text-gray-600 hover:text-gray-900 transition-colors">
+              <button
+                onClick={() => navigate('/login')}
+                className="block w-full text-left text-gray-600 hover:text-gray-900 transition-colors"
+              >
                 Login
               </button>
-              <button className="w-full px-6 py-3 rounded-xl bg-[#1A2F40] text-white">
+              <button
+                onClick={() => navigate('/signup')}
+                className="w-full px-6 py-3 rounded-xl bg-[#1A2F40] text-white"
+              >
                 Get Started Free
               </button>
             </div>

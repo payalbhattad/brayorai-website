@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
 
 type Period = "monthly" | "yearly";
 
 export function Pricing() {
+  const navigate = useNavigate();
   const [billingPeriod, setBillingPeriod] = useState<Period>("monthly");
 
   const plans = [
@@ -103,6 +105,7 @@ export function Pricing() {
               {/* Bottom (aligned) */}
               <div>
                 <button
+                  onClick={() => navigate('/signup')}
                   className={`w-full rounded-xl px-6 py-4 text-center text-base shadow-lg transition-transform hover:scale-105 ${p.ctaClass} mt-12`}
                 >
                   {p.cta}

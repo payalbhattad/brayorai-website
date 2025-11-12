@@ -1,8 +1,9 @@
-import uploadImg from "../assets/upload.svg";
-import formatImg from "../assets/transform.svg";
-import downloadImg from "../assets/download.svg";
+import uploadImg from "../../assets/upload.svg";
+import formatImg from "../../assets/transform.svg";
+import downloadImg from "../../assets/download.svg";
 
-import { Reveal, Stagger, fadeUp, scaleIn } from "../lib/motion-kit";
+import { Reveal, Stagger, fadeUp, scaleIn } from "@/lib/motion-kit";
+
 
 export function Solution() {
   const steps = [

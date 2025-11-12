@@ -1,7 +1,7 @@
 import { Clock, Target, Users } from "lucide-react";
-import problemImg from "../assets/problem-photo.svg";
+import problemImg from "../../assets/problem-photo.svg";
 
-import { Reveal, Stagger, fadeUp, scaleIn } from "../lib/motion-kit";
+import { Reveal, Stagger, fadeUp, scaleIn } from "@/lib/motion-kit";
 
 export function Problem() {
   const items = [

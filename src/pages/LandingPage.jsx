@@ -1,31 +1,36 @@
-import { Navigation } from "../components/Navigation";
-import { Hero } from "../components/Hero";
-import { MetricsBanner } from "../components/MetricsBanner";
-import { Problem } from "../components/Problem";
-import { Solution } from "../components/Solution";
-import { Features } from "../components/Features";
-import { ScrollingBanner } from "../components/ScrollingBanner";
-import { Pricing } from "../components/Pricing";
-import { FAQ } from "../components/FAQ";
-import { Testimonials } from "../components/Testimonials";
-import { CTA } from "../components/CTA";
-import { Footer } from "../components/Footer";
+import MarketingLayout from "../layouts/MarketingLayout";
+import { Hero } from "../components/LandingPage/Hero";
+import { MetricsBanner } from "../components/LandingPage/MetricsBanner";
+import { Problem } from "../components/LandingPage/Problem";
+import { Solution } from "../components/LandingPage/Solution";
+import { Features } from "../components/LandingPage/Features";
+import { ScrollingBanner } from "../components/LandingPage/ScrollingBanner";
+import { Pricing } from "../components/LandingPage/Pricing";
+import { FAQ } from "../components/LandingPage/FAQ";
+import { Testimonials } from "../components/LandingPage/Testimonials";
+import { CTA } from "../components/LandingPage/CTA";
 
 export default function LandingPage() {
     return (
-        <div className="min-h-screen bg-white">
-            <Navigation />
+        <MarketingLayout>
             <Hero />
             <MetricsBanner />
             <Problem />
-            <Solution />
-            <Features />
+            <div id="how-it-works">
+                <Solution />
+            </div>
+            <div id="features">
+                <Features />
+            </div>
             <ScrollingBanner />
-            <Pricing />
+            <div id="pricing">
+                <Pricing />
+            </div>
             <FAQ />
             <Testimonials />
-            <CTA />
-            <Footer />
-        </div>
+            <div id="contact">
+                <CTA />
+            </div>
+        </MarketingLayout>
     );
 }

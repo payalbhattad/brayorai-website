@@ -1,6 +1,8 @@
 import { ArrowRight, FileText } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
       {/* Floating Gradient Blobs */}
@@ -29,7 +31,10 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
-          <button className="group px-8 py-4 rounded-xl bg-gradient-to-r from-[#F29224] to-[#F29224] text-white hover:scale-105 transition-transform shadow-lg flex items-center gap-2">
+          <button
+            onClick={() => navigate('/signup')}
+            className="group px-8 py-4 rounded-xl bg-gradient-to-r from-[#F29224] to-[#F29224] text-white hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
+          >
             Start Free Trial Today
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
